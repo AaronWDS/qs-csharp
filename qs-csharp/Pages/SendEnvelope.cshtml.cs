@@ -46,15 +46,17 @@ namespace qs_csharp.Pages
 
             // Create the signer recipient object 
             Signer signer = new Signer
-            { Email = signerEmail, Name = signerName,
+            { 
+              Email = signerEmail, Name = signerName,
               RecipientId = "1", RoutingOrder = "1"
             };
 
             // Create the sign here tab (signing field on the document)
             SignHere signHereTab = new SignHere
-            { DocumentId = "1", PageNumber = "1", RecipientId = "1",
+            { 
+              DocumentId = "1", PageNumber = "1", RecipientId = "1",
               TabLabel = "Sign Here Tab", XPosition = "195", YPosition = "147"
-            };
+              };
             SignHere[] signHereTabs = new SignHere[] { signHereTab };
 
             // Add the sign here tab array to the signer object.
@@ -78,7 +80,6 @@ namespace qs_csharp.Pages
             EnvelopesApi envelopesApi = new EnvelopesApi(apiClient.Configuration);
             EnvelopeSummary results = envelopesApi.CreateEnvelope(accountId, envelopeDefinition);
             ViewData["results"] = $"Envelope status: {results.Status}. Envelope ID: {results.EnvelopeId}";
-
             return new PageResult();
         }
 
